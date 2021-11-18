@@ -1,22 +1,23 @@
-resource "google_compute_instance" "www_server" {
+resource "google_compute_instance" "server" {
+  count        = length(local.vms)
   project      = var.project_name
-  name         = var.www_vm_name
-  machine_type = var.www_vm_machine_type
-  zone         = var.vm_zone
-
-  tags = var.www_vm_tags
-  labels = var.www_vm_labels
+  name         = local.vms[count.index].name
+  machine_type = local.vms[count.index].machine_type
+  zone         = local.vms[count.index].zone
 
   boot_disk {
     initialize_params {
-      image = var.www_boot_disk_image
-      size  = var.www_boot_disk_size
+      image = local.vms[count.index].image
+      size  = local.vms[count.index].boot_disk_size
     }
   }
 
   network_interface {
     subnetwork_project = var.project_name
-    subnetwork         = var.vm_subnetwork
-    access_config {}
+    subnetwork         = local.vms[count.index].subnetwork
+    dynamic "access_config" {
+      for_each = local.vms[count.index].public_ip == true ? [1] : []
+      content {}
+    }
   }
 }
