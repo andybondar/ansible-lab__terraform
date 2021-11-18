@@ -5,6 +5,9 @@ resource "google_compute_instance" "server" {
   machine_type = local.vms[count.index].machine_type
   zone         = local.vms[count.index].zone
 
+  tags = local.vms[count.index].tags
+  labels = local.vms[count.index].labels
+
   boot_disk {
     initialize_params {
       image = local.vms[count.index].image

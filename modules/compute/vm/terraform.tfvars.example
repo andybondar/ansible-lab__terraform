@@ -12,6 +12,10 @@ vm_properties = [
     boot_disk_image = "projects/ubuntu-os-cloud/global/images/ubuntu-2004-focal-v20211102"
     subnetwork = "default"
     public_ip = true
+    tags = ["http-allow"]
+    labels = {
+      role = "www"
+    }
   },
   {
     short_name = "mysql"
@@ -21,5 +25,9 @@ vm_properties = [
     boot_disk_image = "projects/ubuntu-os-cloud/global/images/ubuntu-2004-focal-v20211102"
     subnetwork = "default"
     public_ip = false
+    tags = ["mysql-allow"]
+    labels = {
+      role = "mysql"
+    }
   }
 ]
