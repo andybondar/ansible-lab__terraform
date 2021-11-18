@@ -1,1 +1,25 @@
 www_vm_name = "devops-crash-course-app-www-lab-02"
+
+ssh_user = "user"
+ssh_pub_key_file = "/home/user/.creds/ssh-keys/user.rsa.pub"
+
+vm_properties = [
+  {
+    short_name = "www"
+    machine_type = "e2-micro"
+    zone = "us-central1-a"
+    boot_disk_size = "10"
+    boot_disk_image = "projects/ubuntu-os-cloud/global/images/ubuntu-2004-focal-v20211102"
+    subnetwork = "default"
+    public_ip = true
+  },
+  {
+    short_name = "mysql"
+    machine_type = "n2-standard-2"
+    zone = "us-central1-a"
+    boot_disk_size = "20"
+    boot_disk_image = "projects/ubuntu-os-cloud/global/images/ubuntu-2004-focal-v20211102"
+    subnetwork = "default"
+    public_ip = false
+  }
+]
