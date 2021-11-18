@@ -1,4 +1,4 @@
-www_vm_name = "devops-crash-course-app-www-lab-02"
+project_name = "user-project-name-01"
 
 ssh_user = "user"
 ssh_pub_key_file = "/home/user/.creds/ssh-keys/user.rsa.pub"
