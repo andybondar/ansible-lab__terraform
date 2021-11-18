@@ -20,4 +20,8 @@ resource "google_compute_instance" "server" {
       content {}
     }
   }
+
+  metadata = {
+    ssh-keys = "${var.ssh_user}:${file(var.ssh_pub_key_file)}"
+  }
 }
