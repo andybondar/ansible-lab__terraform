@@ -18,6 +18,8 @@ locals {
       "image" = vm.boot_disk_image
       "subnetwork" = vm.subnetwork
       "public_ip" = vm.public_ip
+      "tags" = vm.tags
+      "labels" = vm.labels
     }
   ])
 }
